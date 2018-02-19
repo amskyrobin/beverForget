@@ -937,7 +937,7 @@ module.exports = focusNode;
 /* 14 */
 /***/ (function(module, exports) {
 
-module.exports = {"drinkingEstablishment":[{"name":"Footlights","type":"bar","id":1,"drinks":[{"id":1,"name":"dark and stormy","price":6},{"id":2,"name":"gin and tonic","price":8},{"id":3,"name":"moscow mule","price":7.2}]},[{"nsame":"Chanter","type":"bar","id":2,"drinks":[{"id":4,"name":"margarita","price":5},{"id":5,"name":"tequila sunrise","price":5.2},{"id":6,"name":"brewdog","price":5.9}]}]]}
+module.exports = {"drinkingEstablishment":[{"name":"Footlights","type":"bar","id":1,"drinks":[{"id":1,"name":"dark and stormy","price":6},{"id":2,"name":"gin and tonic","price":8},{"id":3,"name":"moscow mule","price":7.2}]},{"name":"Chanter","type":"bar","id":2,"drinks":[{"id":4,"name":"margarita","price":5},{"id":5,"name":"tequila sunrise","price":5.2},{"id":6,"name":"brewdog","price":5.9}]}]}
 
 /***/ }),
 /* 15 */
@@ -18361,31 +18361,38 @@ var DrinkingEstablishment = function (_React$Component) {
   function DrinkingEstablishment(props) {
     _classCallCheck(this, DrinkingEstablishment);
 
-    return _possibleConstructorReturn(this, (DrinkingEstablishment.__proto__ || Object.getPrototypeOf(DrinkingEstablishment)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (DrinkingEstablishment.__proto__ || Object.getPrototypeOf(DrinkingEstablishment)).call(this, props));
+
+    _this.state = { drinkingEstablishments: [] };
+    return _this;
   }
 
   _createClass(DrinkingEstablishment, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var jsonString = _mockJSON2.default.drinkingEstablishment;
+      console.log('jsonString', jsonString);
+      for (var i = 0; i < jsonString.length; i++) {
+        var drinkingEstablishment = jsonString[i];
+        console.log('drinkingEstablishment', drinkingEstablishment);
+        this.setState({
+          drinkingEstablishments: drinkingEstablishment
 
-      console.log(jsonString);
+        });
+        console.log(this.state);
+      }
     }
-
-    // getDrinkingEstablishment(){
-    //   var jsonString = mockData;
-    //   var drinkingEstablishment = JSON.parse(jsonString);
-    //   console.log(drinkingEstablishment)
-    //   return drinkingEstablishment
-    // }
-
   }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement("h1", null)
+        _react2.default.createElement(
+          "h1",
+          null,
+          this.state.drinkingEstablishments.name
+        )
       );
     }
   }]);

@@ -21,8 +21,8 @@
       ]
 
     },
-    [{
-        "nsame": "Chanter",
+    {
+        "name": "Chanter",
         "type": "bar",
         "id": 2,
         "drinks": [{
@@ -42,7 +42,7 @@
           }]
 
         }
-      ]
+      
       ]
     }
 

@@ -5,27 +5,37 @@ class DrinkingEstablishment extends React.Component {
 
   constructor(props){
     super(props)
+    this.state = {drinkingEstablishments: []}
   }
+
+
+
+ 
 
   componentDidMount() {
     var jsonString = mockData.drinkingEstablishment;
-    
-    console.log(jsonString)
- 
+    console.log('jsonString', jsonString)
+    for (var i = 0; i < jsonString.length; i++) {
+      var drinkingEstablishment = jsonString[i];
+      console.log('drinkingEstablishment', drinkingEstablishment)
+      this.setState({
+        drinkingEstablishments: drinkingEstablishment
+
+      })
+      console.log(this.state)
+    }
   }
 
 
-  // getDrinkingEstablishment(){
-  //   var jsonString = mockData;
-  //   var drinkingEstablishment = JSON.parse(jsonString);
-  //   console.log(drinkingEstablishment)
-  //   return drinkingEstablishment
-  // }
+
+
+
 
   render(){
     return (
       <div>
-      <h1>{}</h1>
+      <h1>{this.state.drinkingEstablishments.name}</h1>
+
       </div>
       )
   }
