@@ -18347,6 +18347,14 @@ var _mockJSON = __webpack_require__(14);
 
 var _mockJSON2 = _interopRequireDefault(_mockJSON);
 
+var _drinksList = __webpack_require__(30);
+
+var _drinksList2 = _interopRequireDefault(_drinksList);
+
+var _tab = __webpack_require__(31);
+
+var _tab2 = _interopRequireDefault(_tab);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18363,36 +18371,63 @@ var DrinkingEstablishment = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (DrinkingEstablishment.__proto__ || Object.getPrototypeOf(DrinkingEstablishment)).call(this, props));
 
-    _this.state = { drinkingEstablishments: [] };
+    _this.state = {
+      drinkingEstablishments: [],
+      selectedDrinkingEstablishment: null
+    };
+    _this.handleDrinkListClick = _this.handleDrinkListClick.bind(_this);
     return _this;
   }
 
   _createClass(DrinkingEstablishment, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      var _this2 = this;
+
       var jsonString = _mockJSON2.default.drinkingEstablishment;
-      console.log('jsonString', jsonString);
+      var drinkingEstbalishmentArray = [];
       for (var i = 0; i < jsonString.length; i++) {
         var drinkingEstablishment = jsonString[i];
-        console.log('drinkingEstablishment', drinkingEstablishment);
-        this.setState({
-          drinkingEstablishments: drinkingEstablishment
-
+        drinkingEstbalishmentArray.push({
+          name: drinkingEstablishment.name,
+          id: drinkingEstablishment.id,
+          type: drinkingEstablishment.type
         });
-        console.log(this.state);
+        this.setState({ drinkingEstablishments: drinkingEstbalishmentArray }, function () {
+          console.log("state in setState:", _this2.state);
+        });
       }
     }
+  }, {
+    key: "handleDrinkListClick",
+    value: function handleDrinkListClick(event) {}
   }, {
     key: "render",
     value: function render() {
       return _react2.default.createElement(
         "div",
         null,
-        _react2.default.createElement(
-          "h1",
-          null,
-          this.state.drinkingEstablishments.name
-        )
+        this.state.drinkingEstablishments.map(function (item) {
+          return _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+              "h1",
+              null,
+              item.name
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              item.type
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              "Show Drinks List"
+            )
+          );
+        })
       );
     }
   }]);
@@ -18401,6 +18436,79 @@ var DrinkingEstablishment = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = DrinkingEstablishment;
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _mockJSON = __webpack_require__(14);
+
+var _mockJSON2 = _interopRequireDefault(_mockJSON);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var DrinksList = function DrinksList(props) {
+  return _react2.default.createElement("div", null);
+};
+
+exports.default = DrinksList;
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(2);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Tab = function (_React$Component) {
+  _inherits(Tab, _React$Component);
+
+  function Tab(props) {
+    _classCallCheck(this, Tab);
+
+    return _possibleConstructorReturn(this, (Tab.__proto__ || Object.getPrototypeOf(Tab)).call(this, props));
+  }
+
+  _createClass(Tab, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement("div", null);
+    }
+  }]);
+
+  return Tab;
+}(_react2.default.Component);
+
+exports.default = Tab;
 
 /***/ })
 /******/ ]);

@@ -8,9 +8,12 @@
     "start": "webpack -w"
   },
   "devDependencies": {
-     "jest": "^22.0.4",
-     "prettier": "1.9.2"
-   },
+    "jest": "^22.0.4",
+    "prettier": "1.9.2"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react-redux": "^5.0.7"
+  }
 }
