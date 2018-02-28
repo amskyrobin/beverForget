@@ -18374,7 +18374,8 @@ var DrinkingEstablishment = function (_React$Component) {
     _this.state = {
       drinkingEstablishments: [],
       drinks: [],
-      selectedDrinkingEstablishment: null
+      selectedDrinkingEstablishment: null,
+      tab: []
     };
     _this.handleDrinkListClick = _this.handleDrinkListClick.bind(_this);
     _this.getDrinksList = _this.getDrinksList.bind(_this);
@@ -18496,7 +18497,8 @@ var DrinkingEstablishment = function (_React$Component) {
             )
           );
         }, this),
-        _react2.default.createElement(_drinksList2.default, { drinksList: this.state.drinks })
+        _react2.default.createElement(_drinksList2.default, { drinksList: this.state.drinks }),
+        _react2.default.createElement(_tab2.default, { drinksList: this.state.drinks })
       );
     }
   }]);
@@ -18517,6 +18519,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
@@ -18527,32 +18531,95 @@ var _mockJSON2 = _interopRequireDefault(_mockJSON);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var DrinksList = function DrinksList(props) {
-  console.log("props", props);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var DrinksList = function (_React$Component) {
+  _inherits(DrinksList, _React$Component);
+
+  function DrinksList(props) {
+    _classCallCheck(this, DrinksList);
+
+    var _this = _possibleConstructorReturn(this, (DrinksList.__proto__ || Object.getPrototypeOf(DrinksList)).call(this, props));
+
+    _this.state = {
+      drinksTab: []
+    };
+    return _this;
+  }
 
   // for (item in props.drinksList) {
   //   console.log("item:", item);
   // }
 
-  for (var i = 0; i < props.drinksList.length; i++) {
-    console.log(props.drinksList[i].name);
-  }
+  // for (var i = 0; i < props.drinksList.length; i++) {
+  //   console.log(props.drinksList[i].name);
+  // }
 
-  return _react2.default.createElement(
-    "div",
-    null,
-    _react2.default.createElement(
-      "p",
-      null,
-      "hello im rendering"
-    ),
-    _react2.default.createElement(
-      "p",
-      null,
-      props.name
-    )
-  );
-};
+
+  _createClass(DrinksList, [{
+    key: "addToTab",
+    value: function addToTab(item) {
+      var _this2 = this;
+
+      var id = item.id;
+      var name = item.name;
+      console.log(name);
+      var tabArray = [];
+      tabArray.push({
+        name: item.name,
+        price: item.price
+      });
+      this.setState({ drinksTab: tabArray }, function () {
+        console.log("state in setState:", _this2.state);
+      });
+      console.log("tab array", tabArray);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        null,
+        this.props.drinksList.map(function (item, index) {
+          var _this3 = this;
+
+          console.log(item.id);
+          return _react2.default.createElement(
+            "div",
+            null,
+            _react2.default.createElement(
+              "p",
+              null,
+              item.name
+            ),
+            _react2.default.createElement(
+              "p",
+              null,
+              item.price
+            ),
+            _react2.default.createElement(
+              "button",
+              {
+                key: index,
+                value: item.id,
+                onClick: function onClick() {
+                  return _this3.addToTab(item);
+                }
+              },
+              "add to tab"
+            )
+          );
+        }, this)
+      );
+    }
+  }]);
+
+  return DrinksList;
+}(_react2.default.Component);
 
 exports.default = DrinksList;
 

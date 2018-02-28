@@ -9,7 +9,8 @@ class DrinkingEstablishment extends React.Component {
     this.state = {
       drinkingEstablishments: [],
       drinks: [],
-      selectedDrinkingEstablishment: null
+      selectedDrinkingEstablishment: null,
+      tab: []
     };
     this.handleDrinkListClick = this.handleDrinkListClick.bind(this);
     this.getDrinksList = this.getDrinksList.bind(this);
@@ -107,6 +108,7 @@ class DrinkingEstablishment extends React.Component {
           );
         }, this)}
         <DrinksList drinksList={this.state.drinks} />
+        <Tab drinksList={this.state.drinks} />
       </div>
     );
   }
